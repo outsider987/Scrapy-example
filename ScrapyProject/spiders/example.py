@@ -10,8 +10,19 @@ class ExampleSpider(scrapy.Spider):
     def parse(self, response):
         content = response.body
         soup = BeautifulSoup(content, "html5lib")
+        # here is use find with css print 
+        root = soup.find('id',class_="toc")
+        print(root) 
+        # here is use find with html print
         root = soup.find('div',class_="toc")
-        print(root)   
+        print(root)
+        # here is use find_all with html print
+        root_child = root.find_all('li',class_='toclevel-1')  
+        print(root_child)
+        select_data = soup.select('div.toc > ul > li.toclevel-1')
+        print(select_data)
+        
+        
 
 process = CrawlerProcess()
 process.crawl(ExampleSpider)
