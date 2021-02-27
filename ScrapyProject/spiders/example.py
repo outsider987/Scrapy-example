@@ -16,9 +16,10 @@ class ExampleSpider(scrapy.Spider):
         # here is use find with html print
         root = soup.find('div',class_="toc")
         print(root)
-        # here is use find_all with html print
+        # here is use find_all with css print
         root_child = root.find_all('li',class_='toclevel-1')  
         print(root_child)
+        # here is use select with html print
         select_data = soup.select('div.toc > ul > li.toclevel-1')
         print(select_data)
         
